@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Projet Tutoré</title>
+	<link rel="stylesheet" type="text/css" href="pt.css">
+</head>
+<body>
+	<img src="SolidSnake.png" />
+	<h3>
+		Ruiz Ramirez Dorian // Austin Luke // Compte rendu du Projet Tutoré IS1 - Jeu du Serpent
+	</h3>
+
+	<h2>
+		Introduction
+	</h2>
+
+	<p>
+		
+Voici notre rapport du projet tutoré du cours d'APL. Le projet consistait à créer le jeu du serpent avec la bibliothèque graphique mise à disposition par l'IUT. Pour marquer des points dans ce jeu, il faut faire manger des pommes au serpent. Ces pommes apparaîssent aléatoirement sur la zone de jeu. Si le serpent sort de la zone de jeu ou percute son propre corps, le joueur perd la partie. 
+	</p>
+	<p>
+		Notre rapport sera composé de 3 grandes parties dans lesquelles nous détaillerons la réalisation de notre projet.  
+	</p>
+	<ul>
+		<li><a href="#fonction">Les fonctionnalités du code</a></li>
+		<li><a href="#structure">Sa structure</a></li>
+		<li><a href="#donnees">Composition du serpent</a></li>
+
+	</ul>
+
+	<h2 id="fonction">
+		Fonctionnalités du Code	
+	</h2>
+
+	<p> 
+<table>
+	<tbody>
+		<tr>
+			<td>Mise en pause du Jeu</td>
+			<td>
+ <img src="Gameover.png"></img></td>
+</tr>
+<tr>
+<td> Modification aléatoire de la couleur du serpent</td>
+	 <td> <img src="Pause.png"></img></td>
+</tr>
+<tr>
+<td>Remplacement des pommes par des cercles géants</td>	<td><img src="radar.png"></img></td>
+</tr></tbody></table>
+
+<p>
+	Les fonctions sont regroupées par "idée". Une fonction peut donc affecter plusieurs variables, ce qui est le cas par exemple pour la fonction "apples" qui met à jour le score ainsi que les coordonnées des pommes. Le score est affecté par le nombre de pommes mangés, il semblait donc raisonnable de les mettre ensemble. La plus grande fonction est celle qui dirige le serpent. En plus de son rôle principal, elle met en pause le jeu et fait appel à la fonction "rainbow" qui change la couleur de chaque segment. Ces deux tâches très précises dépendent fortement de la saisie (potentielle) du joueur et donc, nous avons décidé de les rassembler dans un même fichier. 
+	</p>
+	<p>
+	Puisque cette fonction ne modifie pas le jeu, nous avons écrit la fonction "radar" pour rendre la partie un peu plus difficile après un certain nombre de points. La fonction recouvre les pommes par des cercles à rayon croissants, les rendant un peu plus compliqués à trouver.  
+	</p>
+	<h2 id="structure">
+		Structure	
+	</h2>
+	<li>void pause</li>
+	<p>Stoppe l'avancement du programme, et provoque donc la mise en pause du jeu.</p>
+	<li>void rainbowsnake</li>
+	<p>Permet de générer aléatoirement une couleur.</p>
+	<li>void radar</li>
+	<p>Place les grands cercles qui masqueront les pommes.</p>
+	<li>void movesnake</li>
+	<p>Permet de diriger le serpent, tout en évitant qu'il puisse faire demi tour sur lui même et donc se manger automatiquement.</p>
+	<li>int extend</li>
+	<p>Permet d'éviter l'allongement du serpent.</p>
+	<li>void apples</li>
+	<p>Place aléatoirement les pommes sur la zone de jeu, en évitant qu'elles apparaissent sur une pomme déjà existante, en dehors de la zone de jeu, ou sur le serpent.</p>
+	<li>void ui</li>
+	<p>	Permet d'afficher le score du joueur et son temps de jeu.
+	<img src="structures.png"></img>
+	</p>
+	<p>   
+	</p>
+	<p>
+	
+	<h2 id="donnees">	
+	</p>
+		Représentation du serpent
+	</h2>
+	<p>Notre serpent est affiché par un tableau à deux dimensions dans lequel se trouve les coordonnées de chaque partie de son corps, ainsi que la direction. A chaque cycle, la tête prendra la place de la direction et chaque partie du corps prendra la place de la partie qu'elle "suit". Lorsque le serpent mange une pomme, nous ajoutons 2 à la taille du tableau qui compose le serpent, ce qui le fait donc grandir. Une fois que le joueur atteint le score de 30, le serpent prendra une couleur aléatoire sur chaque partie du corps qui varie entre un choix un couleur prédéfini. Si le joueur atteint le score de 55, de grands cercle viendront masquer les pommes. Pour éviter le débordement, nous avons décidé d'établir un point d'arrêt quand le score atteint 500. L'alternative aurait été d'avoir utilisé realloc pour modifier la taille du serpent.  
+	</p>
+	<img src="rainbow.png"></img>
+	<p>
+	La fonction "extend" enregistre chaque nouvelle partie du serpent et évite que le serpent grandisse à l'infini. 
+	</p>
+	<h2>
+		Conclusion
+	</h2>
+	<li>Dorian :</li>
+	<p>Réaliser ce projet fut l'occasion de travailler en binôme et d'apprendre à utiliser le code de l'autre, tout en abordant l'utilisation d'une bibliothèque graphique. Bien que complexe, le sujet était intéressant et nous a permit de progresser de façon significative, car nous abouttissions à quelque chose de plus concrès que dans nos précédents exercices.
+	</p>
+	<li>Luke :</li>
+	<p>Ce projet, sa complexité et ses exigences, m'ont fait progresser en matière de codage, bien que le Makefile ait été créer plus tard, je me rends compte de son utilité, si le projet avait été de plus grande ampleur je n'aurai pas pu faire autrement que de m'en servir dès le début. De nature plutôt réservé,je n'avais pas l'habitude du travail en groupe, le fait de programmer avec quelqu'un m'a permit d'avoir un exemple concret de ce à quoi pourrait ressembler un réel projet en entreprise. Une expérience réellement enrichissante.
+	</p>
+	<p></p>
+</body>
+</html>
+
